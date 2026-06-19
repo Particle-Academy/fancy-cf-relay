@@ -1,0 +1,65 @@
+{
+  "name": "@particle-academy/fancy-cf-relay",
+  "version": "0.1.0",
+  "description": "CDN-safe browser relay channel for agent-integrations' RelayTransport. Adaptive SSE↔long-poll with Cloudflare detection, so the MCP relay survives a Cloudflare/HTTP-3 edge that resets long-lived SSE streams. Zero runtime deps.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Particle-Academy/fancy-cf-relay.git"
+  },
+  "homepage": "https://github.com/Particle-Academy/fancy-cf-relay#readme",
+  "bugs": "https://github.com/Particle-Academy/fancy-cf-relay/issues",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "tsup"
+  },
+  "keywords": [
+    "relay",
+    "sse",
+    "long-polling",
+    "cloudflare",
+    "http3",
+    "quic",
+    "mcp",
+    "agent",
+    "fancy"
+  ],
+  "devDependencies": {
+    "@types/node": "^22.19.21",
+    "jsdom": "^25.0.1",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.0",
+    "vitest": "^3.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "overrides": {
+    "esbuild": "^0.28.1"
+  }
+}
