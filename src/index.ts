@@ -33,7 +33,12 @@ export type {
 export { isBehindCloudflare } from "./detect";
 
 const sleep = (ms: number): Promise<void> => new Promise((r) => setTimeout(r, ms));
-const trimRight = (s: string): string => s.replace(/\/+$/, "");
+const trimRight = (s: string): string => {
+  // Linear trailing-slash trim — avoids the polynomial backtracking of /\/+$/.
+  let end = s.length;
+  while (end > 0 && s.charCodeAt(end - 1) === 47 /* "/" */) end -= 1;
+  return s.slice(0, end);
+};
 const enc = encodeURIComponent;
 
 /** Open the SSE receive leg. Calls `onFail` (once) if it can't deliver. */
