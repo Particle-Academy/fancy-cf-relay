@@ -1,6 +1,6 @@
 {
   "name": "@particle-academy/fancy-cf-relay",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "CDN-safe browser relay channel for agent-integrations' RelayTransport. Adaptive SSE↔long-poll with Cloudflare detection, so the MCP relay survives a Cloudflare/HTTP-3 edge that resets long-lived SSE streams. Zero runtime deps.",
   "repository": {
     "type": "git",
