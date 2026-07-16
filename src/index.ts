@@ -116,9 +116,9 @@ function startLongPoll(
   const ctrl = new AbortController();
   let stopped = false;
   let subscriber = "";
+  let opened = false;
 
   void (async (): Promise<void> => {
-    onOpen();
     let backoff = 500;
     while (!stopped) {
       const u =
@@ -134,6 +134,10 @@ function startLongPoll(
         }
         const data = (await res.json()) as { subscriber?: string; frames?: unknown[] };
         if (typeof data.subscriber === "string") subscriber = data.subscriber;
+        if (!opened) {
+          opened = true;
+          onOpen();
+        }
         for (const f of data.frames ?? []) {
           onFrame(typeof f === "string" ? f : JSON.stringify(f));
         }
