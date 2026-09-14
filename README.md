@@ -1,5 +1,7 @@
 # @particle-academy/fancy-cf-relay
 
+[![Fancified](art/fancified.svg)](https://particle.academy)
+
 A **CDN-safe browser relay channel** for [`agent-integrations`](https://github.com/Particle-Academy/agent-integrations)' `RelayTransport`.
 
 ## Why this exists
@@ -62,9 +64,9 @@ The client re-polls immediately, sending the `subscriber` back each time.
 
 > Park length matters by runtime: on **Node** a parked request is ~free (event
 > loop); on **PHP-FPM** it holds a worker for the park window, so keep `wait`
-> ≤ ~20s and leave FPM headroom. Drop-in endpoints: the Node relay server in
-> `agent-integrations`, and the `particle-academy/fancy-cf-relay` Laravel
-> companion.
+> ≤ ~20s and leave FPM headroom. Drop-in endpoint: the Node relay server in
+> `agent-integrations`. There is no Laravel companion package; a PHP host
+> implements the endpoint to the protocol above.
 
 Outgoing frames POST as before — `POST {baseUrl}/{session}/outbox?token=…` —
 short requests, unaffected by the edge.
