@@ -54,7 +54,7 @@
     "jsdom": "^25.0.1",
     "tsup": "^8.5.0",
     "typescript": "^5.8.0",
-    "vitest": "^4.1.11"
+    "vitest": "^4.1.12"
   },
   "publishConfig": {
     "access": "public"
